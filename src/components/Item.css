@@ -1,0 +1,21 @@
+.Item {
+    border: 1px solid grey;
+    padding: 8px;
+    display: flex;
+}
+
+.wrap-img {
+    width: 10%;
+}
+
+img {
+    width: 80%;
+}
+
+p {
+    margin: 0;
+}
+
+.wrap-text {
+    width: 90%;
+}
