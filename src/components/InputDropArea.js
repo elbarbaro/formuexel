@@ -26,7 +26,7 @@ function InputDropArea(props) {
         const { dataTransfer } = e
         if(dataTransfer.files.length > 0) {
             const file = dataTransfer.files[0]
-            setFiles([...files, { name: file.name, size: formatBytes(file.size) }])
+            setFiles([...files, { name: file.name, size: formatBytes(file.size), content: file }])
         }
     }
 
