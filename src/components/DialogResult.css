@@ -1,0 +1,49 @@
+.DialogResult {
+    margin: auto auto;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    width: 40%;
+    height: 500px;
+    background-color: white;
+    border: 1px solid black;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.image {
+    text-align: center;
+}
+
+.image > img {
+    margin: 1rem;
+    width: 20%;
+}
+
+.border-success {
+    border-width: 3px;
+    border-color:#4caf50;
+}
+
+.border-error {
+    border-width: 3px;
+    border-color:#f44336;
+}
+
+.border-radius {
+    border-radius: 10px;
+}
+
+.dialog-body > p {
+    margin: 8px;
+}
+
+.dialog-actions {
+    margin-top: 16px;
+}

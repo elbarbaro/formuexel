@@ -11,9 +11,8 @@ const uploadRequest = (data, callback) => {
         method: 'POST',
         body: body
     })
-    .then(response => {
-        callback(response)
-    })
+    .then(response => response.json())
+    .then(json => callback(json))
     .catch(error => { console.log(error)})
 }
 
