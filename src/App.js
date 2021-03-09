@@ -14,7 +14,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App w-full px-2 prelative">
       <Form onResult={handleResult}/>
       {result ? <DialogResult result={result} {...data}/>: null}
     </div>

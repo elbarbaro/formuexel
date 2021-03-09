@@ -1,6 +1,6 @@
 import React from 'react'
 import Item from './Item'
-import './InputDropArea.css'
+//import './InputDropArea.css'
 
 function InputDropArea(props) {
 
@@ -36,7 +36,7 @@ function InputDropArea(props) {
     }
 
     return (
-        <div className="InputDropArea" onDragEnter={onDragEnter} onDrop={onDrop} onDragOver={onDragOver}>
+        <div className="InputDropArea h-64 p-2 bg-indigo-200 hover:bg-indigo-300" onDragEnter={onDragEnter} onDrop={onDrop} onDragOver={onDragOver}>
             {
                 files.map((item, index) => (<Item key={index} value={item}/>))
             }
