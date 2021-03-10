@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Item from './Item'
 //import './InputDropArea.css'
 
 function EmptyStateText(props) {
 
+    const { value } = props
+
     return (
         <div className="h-40 flex flex-col justify-end items-center">
             <p className="my-2">
-                Puedes arrastrar un archivo y soltarlo (uno a la vez)
+                { value ? value : 'Puedes arrastrar un archivo y soltarlo (uno a la vez)' }
             </p>
             <div className="w-10">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,6 +23,7 @@ function EmptyStateText(props) {
 function InputDropArea(props) {
 
     const {files, setFiles} = props
+    const [areaMessage, setAreaMessage] = useState('')
 
     const formatBytes = (bytes, decimals) => {
         if(bytes === 0) return '0 Bytes'
@@ -49,11 +52,18 @@ function InputDropArea(props) {
     const onDragOver = (e) => {
         console.log('Drag Over')
         e.preventDefault()
+        setAreaMessage('Suelta el archivo seleccionado')
+    }
+
+    const onDragLeave = (e) => {
+        console.log('Drag Leave')
+        e.preventDefault()
+        setAreaMessage('Puedes arrastrar un archivo y soltarlo (uno a la vez)')
     }
 
     return (
-        <div className="InputDropArea h-64 p-2 bg-indigo-200 hover:bg-indigo-300" onDragEnter={onDragEnter} onDrop={onDrop} onDragOver={onDragOver}>
-            { files.length === 0 ? <EmptyStateText /> : null }
+        <div className="InputDropArea h-64 p-2 bg-indigo-200 hover:bg-indigo-300" onDragEnter={onDragEnter} onDrop={onDrop} onDragOver={onDragOver} onDragLeave={onDragLeave}>
+            { files.length === 0 ? <EmptyStateText value={areaMessage} /> : null }
             {
                 files.map((item, index) => (<Item key={index} value={item}/>))
             }
