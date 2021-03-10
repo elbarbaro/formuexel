@@ -2,6 +2,22 @@ import React from 'react'
 import Item from './Item'
 //import './InputDropArea.css'
 
+function EmptyStateText(props) {
+
+    return (
+        <div className="h-40 flex flex-col justify-end items-center">
+            <p className="my-2">
+                Puedes arrastrar un archivo y soltarlo (uno a la vez)
+            </p>
+            <div className="w-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+            </div>
+        </div>
+    )
+}
+
 function InputDropArea(props) {
 
     const {files, setFiles} = props
@@ -37,6 +53,7 @@ function InputDropArea(props) {
 
     return (
         <div className="InputDropArea h-64 p-2 bg-indigo-200 hover:bg-indigo-300" onDragEnter={onDragEnter} onDrop={onDrop} onDragOver={onDragOver}>
+            { files.length === 0 ? <EmptyStateText /> : null }
             {
                 files.map((item, index) => (<Item key={index} value={item}/>))
             }
