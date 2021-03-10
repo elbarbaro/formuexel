@@ -61,11 +61,15 @@ function InputDropArea(props) {
         setAreaMessage('Puedes arrastrar un archivo y soltarlo (uno a la vez)')
     }
 
+    const deleteFile = (index) => {
+        setFiles([...files.filter((item, i) => i !== index)])
+    }
+
     return (
         <div className="InputDropArea h-64 p-2 bg-indigo-200 hover:bg-indigo-300" onDragEnter={onDragEnter} onDrop={onDrop} onDragOver={onDragOver} onDragLeave={onDragLeave}>
             { files.length === 0 ? <EmptyStateText value={areaMessage} /> : null }
             {
-                files.map((item, index) => (<Item key={index} value={item}/>))
+                files.map((item, index) => (<Item key={index} index={index} value={item} deleteFile={deleteFile} />))
             }
         </div>
     )
