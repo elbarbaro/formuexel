@@ -34,6 +34,11 @@ function InputDropArea(props) {
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
     }
 
+    const checkEmptyFiles = files => {
+        if(files.length === 0)
+            setAreaMessage('')
+    }
+
     const onDragEnter = (e) => {
         console.log('Drag Enter')
         console.log(e)
@@ -62,7 +67,9 @@ function InputDropArea(props) {
     }
 
     const deleteFile = (index) => {
-        setFiles([...files.filter((item, i) => i !== index)])
+        const keepFiles = files.filter((item, i) => i !== index)
+        setFiles([...keepFiles])
+        checkEmptyFiles(keepFiles)
     }
 
     return (
