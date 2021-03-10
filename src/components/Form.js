@@ -4,6 +4,15 @@ import InputDropArea from './InputDropArea'
 import uploadRequest from '../services/uploads'
 //import './Form.css'
 
+function FormFooter(props) {
+    return (
+        <div className="flex my-10 justify-around items-center">
+            <p className="flex-1">Generar formulario de Google con archivo Excel</p>
+            <button className="w-40 btn bg-teal-500 text-white hover:bg-teal-800" type="submit">Enviar</button>
+        </div>
+    )
+}
+
 function Form(props) {
 
     const [files, setFiles] = useState([])
@@ -35,9 +44,7 @@ function Form(props) {
                 <Input type="text" name="title" placeholder="Title" ref={titleRef} readOnly={false} />
                 <Input type="text" name="description" placeholder="Description" ref={descriptonRef} readOnly={false}/>
                 <InputDropArea files={files} setFiles={setFiles}/>
-                <div className="flex justify-center">
-                    <button className="flex-initial w-64 m-10 btn bg-teal-500 text-white hover:bg-teal-800" type="submit">Enviar</button>
-                </div>
+                { files.length > 0 ? <FormFooter /> : null } 
             </form>
             {isSuccessful?<div>Datos cargados</div>:null}
         </div>
