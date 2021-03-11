@@ -46,6 +46,10 @@ function Form(props) {
                 <InputDropArea files={files} setFiles={setFiles}/>
                 { files.length > 0 ? <FormFooter /> : null } 
             </form>
+            <div className="my-2 flex justify-center items-center">
+                <span className="mx-4 font-bold">¿No tienes el formato?</span>
+                <a className="btn font-bold text-blue-500 border-2 border-transparent hover:border-blue-500" href="/templates/formato_preguntas.xlsx" download>Descargar</a>
+            </div>
             {isSuccessful?<div>Datos cargados</div>:null}
         </div>
     )
